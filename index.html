@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABDULLAH ALHUWAYSHIL - Architecture Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+/* Design System Variables */
+:root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+
+  /* Background color tokens */
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+
+  /* Semantic Color Tokens */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-success: var(--color-teal-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+
+  /* Typography */
+  --font-family-base: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 48px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.2);
+
+  /* Animation */
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Architecture-specific gradients */
+  --gradient-hero: linear-gradient(135deg, #1a365d 0%, #d69e2e 100%);
+  --gradient-section: linear-gradient(to right, var(--color-primary), var(--color-teal-400));
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--font-size-base);
+}
+
+body {
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-20);
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: var(--space-16) 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-12) 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-20);
+}
+
+.nav-logo {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: var(--space-32);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+  transition: color var(--duration-normal) var(--ease-standard);
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-primary);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--duration-normal) var(--ease-standard);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--color-text);
+  transition: var(--duration-normal);
+  border-radius: 2px;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, 
+              var(--color-cream-50) 0%, 
+              rgba(252, 252, 249, 0.95) 50%,
+              var(--color-gray-200) 100%) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-charcoal-800);
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.profile-image {
+  margin-bottom: var(--space-32);
+  animation: float 3s ease-in-out infinite;
+}
+
+.profile-placeholder {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.profile-placeholder i {
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.hero-name {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-16);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-roles {
+  height: 60px;
+  margin-bottom: var(--space-20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typewriter {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.9);
+  border-right: 2px solid white;
+  padding-right: 8px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { border-color: white; }
+  51%, 100% { border-color: transparent; }
+}
+
+.hero-tagline {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-40);
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--space-20);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-32);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  border: none;
+}
+
+.btn-primary {
+  background: white;
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: var(--color-text);
+  transform: translateY(-2px);
+}
+
+/* Section Styles */
+.section {
+  padding: var(--space-80) 0;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-48);
+  text-align: center;
+  color: var(--color-text);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -var(--space-16);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--gradient-section);
+  border-radius: var(--radius-sm);
+}
+
+/* About Section */
+.about {
+  background: var(--color-surface);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-64);
+  align-items: center;
+  margin-bottom: var(--space-48);
+}
+
+.about-image {
+  text-align: center;
+}
+
+.about-image-placeholder {
+  width: 250px;
+  height: 250px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-section);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-image-placeholder i {
+  font-size: 5rem;
+  color: white;
+}
+
+.about-text h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-24);
+  color: var(--color-text);
+}
+
+.about-description {
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-32);
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-24);
+}
+
+.info-card {
+  background: white;
+  padding: var(--space-32);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform var(--duration-normal) var(--ease-standard);
+  border: 1px solid var(--color-card-border);
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.info-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gradient-section);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-16);
+}
+
+.info-icon i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.info-card h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.info-card p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.info-subtext {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-4);
+}
+
+/* Skills Section */
+.skills {
+  background: white;
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64);
+}
+
+.skills-column h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-32);
+  color: var(--color-text);
+}
+
+.skill-item {
+  margin-bottom: var(--space-24);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+}
+
+.skill-name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.skill-percentage {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+}
+
+.skill-bar {
+  height: 8px;
+  background: var(--color-bg-1);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: var(--gradient-section);
+  border-radius: var(--radius-full);
+  width: 0%;
+  transition: width 1.5s ease-in-out;
+}
+
+/* Projects Section */
+.projects {
+  background: var(--color-bg-1);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-32);
+}
+
+.project-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-xl);
+}
+
+.project-image {
+  height: 200px;
+  background: var(--gradient-section);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-image i {
+  font-size: 3rem;
+  color: white;
+}
+
+.project-content {
+  padding: var(--space-24);
+}
+
+.project-year {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-8);
+}
+
+.project-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.project-location {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-12);
+}
+
+.project-category {
+  display: inline-block;
+  background: var(--color-bg-3);
+  color: var(--color-primary);
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-12);
+}
+
+.project-description {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-16);
+}
+
+.project-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.skill-tag {
+  background: var(--color-bg-2);
+  color: var(--color-text);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Professional Skills Grid */
+.professional-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-16);
+}
+
+.professional-skill-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  background: white;
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-card-border);
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.professional-skill-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.professional-skill-item i {
+  color: var(--color-success);
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+
+.professional-skill-item span {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+/* Certifications Section */
+.certifications {
+  background: white;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-24);
+}
+
+.certification-card {
+  background: white;
+  padding: var(--space-24);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-card-border);
+  transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.certification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.certification-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient-section);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-16);
+}
+
+.certification-icon i {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.certification-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.certification-issuer {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+/* Contact Section */
+.contact {
+  background: var(--color-bg-1);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient-section);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-icon i {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.contact-text h4 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+
+.contact-text p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.contact-form {
+  background: white;
+  padding: var(--space-40);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.form-group {
+  margin-bottom: var(--space-24);
+}
+
+.form-control {
+  width: 100%;
+  padding: var(--space-16);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  transition: border-color var(--duration-normal) var(--ease-standard);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-submit {
+  width: 100%;
+  background: var(--gradient-section);
+  color: white;
+  padding: var(--space-16) var(--space-32);
+  border: none;
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Footer */
+.footer {
+  background: var(--color-slate-900);
+  color: white;
+  padding: var(--space-40) 0 var(--space-20);
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-20);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-32);
+  list-style: none;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color var(--duration-normal);
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  padding-top: var(--space-20);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: white;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: var(--space-40);
+    transition: left var(--duration-normal);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hero-name {
+    font-size: var(--font-size-4xl);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-32);
+  }
+
+  .info-cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-40);
+  }
+
+  .professional-skills-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-40);
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: var(--space-20);
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .container {
+    padding: 0 var(--space-16);
+  }
+
+  .section {
+    padding: var(--space-64) 0;
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: var(--font-size-3xl);
+  }
+
+  .typewriter {
+    font-size: var(--font-size-xl);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+}
+    
+/* Hero Text Colors - Updated */
+.hero-content h1, .hero h1, .hero-name { color: var(--color-charcoal-800) !important; text-shadow: none !important; }
+.hero-content .subtitle, .hero .subtitle { color: var(--color-teal-500) !important; }
+.hero-content p, .hero p, .hero-tagline { color: var(--color-slate-500) !important; }
+.typewriter { color: var(--color-text) !important; border-left-color: var(--color-teal-500) !important; }
+.btn-primary { background: linear-gradient(135deg, var(--color-teal-500) 0%, var(--color-teal-700) 100%) !important; color: white !important; }
+.btn-secondary { border-color: var(--color-teal-500) !important; color: var(--color-teal-500) !important; background: transparent !important; }
+.btn-secondary:hover { background: var(--color-teal-500) !important; color: white !important; }
+
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">ABDULLAH ALHUWAYSHIL</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About Me</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-image">
+                <img src="hero-logo.jpg" alt="Architectural Monogram" class="hero-logo" style="max-width:280px;display:block;margin:0 auto;">
+            </div>
+            <h1 class="hero-name">ABDULLAH ALHUWAYSHIL</h1>
+            <div class="hero-roles">
+                <span class="typewriter" id="typewriter"></span>
+            </div>
+            <p class="hero-tagline">Innovative architectural design combining tradition and modernity</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-image-placeholder">
+                        <img src="profile.jpg" alt="Abdullah Alhuwayshil" class="about-profile-photo">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p class="about-description">
+                        I'm Abdullah Alhuwayshil, an architect specializing in innovative architectural design and 3D visualization. Student at King Saud University majoring in Architecture, I strive to develop architectural designs that align with Saudi Vision 2030 and achieve the balance between beauty and function.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <img src="ksu-logo.jpg" alt="King Saud University" class="ksu-logo">
+                    </div>
+                    <h3>EDUCATION</h3>
+                    <p>B.Sc in Architecture</p>
+                    <div class="info-subtext">KING SAUD UNIVERSITY</div>
+                    <div class="info-subtext">AUG 2019 – DEC 2025</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>PROJECTS</h3>
+                <p>7+ Projects</p>
+                    <div class="info-subtext">Graduation, Training Projects, Academic projects</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>CERTIFICATIONS</h3>
+                    <p>5+ Certifications</p>
+                    <div class="info-subtext">Google, SDAIA, Misk, EDRAAK, UN</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <h2 class="section-title">Skills &amp; Competencies</h2>
+            <div class="skills-container">
+                <div class="skills-column">
+                    <h3>Software Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Revit</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">AutoCAD</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">3DS MAX</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">SketchUp</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Rhino</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">D5 Render</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Lumion</span>
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Twinmotion</span>
+                            <span class="skill-percentage">87%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="87"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Photoshop</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Illustrator</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-column">
+                    <h3>Professional Skills</h3>
+                    <div class="professional-skills-grid">
+                        <div class="professional-skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>3D Modeling</span>
+                        </div>
+                        <div class="professional-skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Architectural Visualization</span>
+                        </div>
+                        <div class="professional-skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Sustainable Design</span>
+                        </div>
+                        <div class="professional-skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Adaptability</span>
+                        </div>
+                        <div class="professional-skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Problem Solving</span>
+                        </div>
+                        <div class="professional-skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Team Collaboration</span>
+                        </div>
+                        <div class="professional-skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Presentation Skills</span>
+                        </div>
+                        <div class="professional-skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Communication Skills</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">My Experience</h2>
+            <div class="projects-grid">
+                <!-- Experience 1 - Ministry -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="logo-mlsd.jpg" alt="Ministry of Human Resources and Social Development">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">JUN 2025 - AUG 2025</div>
+                        <h3 class="project-title">Architectural Intern</h3>
+                        <div class="project-location">Ministry of Human Resources and Social Development</div>
+                        <div class="project-category">COOP Training</div>
+                        <p class="project-description">
+                            Led the architectural design of a rehabilitation garden in Al Madinah, modified ministry affiliated plans, and oversaw on-site implementation to ensure compliance with design standards. Coordinated with stakeholders and ensured quality control throughout the project.
+                        </p>
+                        <div class="project-skills">
+                            <span class="skill-tag">AutoCAD</span>
+                            <span class="skill-tag">Revit</span>
+                            <span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">Site Supervision</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 - Asas Makeen -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="makeen-logo.jpg" alt="Asas Makeen Company">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">MAY 2025 - JUN 2025</div>
+                        <h3 class="project-title">Architectural Intern</h3>
+                        <div class="project-location">Asas Makeen Company for Real Estate &amp; Development</div>
+                        <div class="project-category">COOP Training</div>
+                        <p class="project-description">
+                            Reviewed and documented municipal regulations and ensured compliance with the Saudi Building Code for residential buildings. Analyzed building codes and prepared compliance reports while assisting in technical review of architectural drawings.
+                        </p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Saudi Building Code</span>
+                            <span class="skill-tag">Municipal Regulations</span>
+                            <span class="skill-tag">Technical Documentation</span>
+                            <span class="skill-tag">Compliance Review</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 - Rehabilitation Garden (2025) - NEWEST -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Hdyq-lthyl.jpg" alt="Rehabilitation Garden">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">2025</div>
+                        <h3 class="project-title">Rehabilitation Garden Design</h3>
+                        <div class="project-location">Al-Rawabi District, Al-Madinah Al-Munawwarah</div>
+                        <div class="project-category">Professional Project</div>
+                        <p class="project-description">
+                            The Park is the first of its kind in the Al-Madinah Al-Munawwarah region, designed with a strong focus on inclusivity and accessibility. The park features a diverse range of facilities that cater to people with special needs, offering them a safe and engaging environment where they can enjoy recreation and relaxation without barriers.
+                        </p>
+                        <div class="project-skills">
+                            <span class="skill-tag">AutoCAD</span>
+                            <span class="skill-tag">Revit</span>
+                            <span class="skill-tag">Urban Planning</span>
+                            <span class="skill-tag">Project Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 - Kingdom E-Sports (2024-2025) -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="mshrw-ltkhrj.jpg" alt="Kingdom E-Sports Center">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">2024-2025</div>
+                        <h3 class="project-title">Kingdom E-Sports Digital Entertainment Center</h3>
+                        <div class="project-location">King Salman Road, Riyadh</div>
+                        <div class="project-category">Graduation Project</div>
+                        <p class="project-description">
+                            A comprehensive graduation project for a modern electronic gaming and digital entertainment center strategically located on King Salman Road in northern Riyadh. The design addresses the growing demand for esports and digital entertainment venues in Saudi Arabia.
+                        </p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Revit</span>
+                            <span class="skill-tag">3DS MAX</span>
+                            <span class="skill-tag">D5 Render</span>
+                            <span class="skill-tag">BIM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Hyperloop Station (2024) -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="hybrlwb.jpg" alt="Hyperloop Station Design">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">2024</div>
+                        <h3 class="project-title">Hyperloop Station Design</h3>
+                        <div class="project-location">Airport Road, Riyadh</div>
+                        <div class="project-category">Transportation Architecture</div>
+                        <p class="project-description">
+                            Academic project exploring futuristic transportation architecture for a hyperloop station on Airport Road, Riyadh. The design integrates cutting-edge hyperloop technology with sustainable architecture.
+                        </p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Parametric Design</span>
+                            <span class="skill-tag">Grasshopper</span>
+                            <span class="skill-tag">Rhino</span>
+                            <span class="skill-tag">Sustainable Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 - Residential Apartment (2024) -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="lGrf.jpg" alt="Residential Apartment Design">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">2024</div>
+                        <h3 class="project-title">Residential Apartment Design</h3>
+                        <div class="project-location">Personal Project</div>
+                        <div class="project-category">Interior Design</div>
+                        <p class="project-description">
+                            Personal interior design commission for a family apartment. The project involved complete space planning, custom furniture design, material and color palette selection, and lighting design.
+                        </p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Interior Design</span>
+                            <span class="skill-tag">3ds Max</span>
+                            <span class="skill-tag">Space Planning</span>
+                            <span class="skill-tag">Visualization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 - Hotel Design (2023) -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="fndq.jpg" alt="Hotel Design">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">2023</div>
+                        <h3 class="project-title">Hotel Design</h3>
+                        <div class="project-location">Jeddah</div>
+                        <div class="project-category">Hospitality Architecture</div>
+                        <p class="project-description">
+                            Academic project for a contemporary hotel in Jeddah featuring modern hospitality design. The project includes guest rooms and suites, lobby and reception areas, restaurants and dining facilities.
+                        </p>
+                        <div class="project-skills">
+                            <span class="skill-tag">AutoCAD</span>
+                            <span class="skill-tag">Revit</span>
+                            <span class="skill-tag">Hospitality Design</span>
+                            <span class="skill-tag">BIM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 - High School (2022) -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="lthnwy.jpg" alt="High School Design">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">2022</div>
+                        <h3 class="project-title">High School Design</h3>
+                        <div class="project-location">Hittin District, Riyadh</div>
+                        <div class="project-category">Educational Architecture</div>
+                        <p class="project-description">
+                            Academic project for a modern high school facility in Hittin District, Riyadh. The design focuses on creating an optimal learning environment with flexible classrooms and laboratories.
+                        </p>
+                        <div class="project-skills">
+                            <span class="skill-tag">AutoCAD</span>
+                            <span class="skill-tag">Revit</span>
+                            <span class="skill-tag">Educational Design</span>
+                            <span class="skill-tag">3D Modeling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 - Faculty Housing (2022) - OLDEST -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="skn-D-hyy-ltdrys.jpg" alt="Faculty Housing Complex">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">2022</div>
+                        <h3 class="project-title">Faculty Housing Complex</h3>
+                        <div class="project-location">King Saud University</div>
+                        <div class="project-category">Residential Architecture</div>
+                        <p class="project-description">
+                            Academic project for a comprehensive residential complex designed for King Saud University faculty members. The design balances privacy with community interaction.
+                        </p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Urban Planning</span>
+                            <span class="skill-tag">Residential Design</span>
+                            <span class="skill-tag">Community Planning</span>
+                            <span class="skill-tag">Landscape Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications &amp; Achievements</h2>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h4 class="certification-name">Google Project Management Professional Certificate</h4>
+                    <p class="certification-issuer">Coursera</p>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4 class="certification-name">Artificial Intelligence Concepts &amp; Advanced Application</h4>
+                    <p class="certification-issuer">SDAIA</p>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="certification-name">Project &amp; Community Initiative Management in Non-Profit Sector</h4>
+                    <p class="certification-issuer">Misk</p>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h4 class="certification-name">Advanced Skills in Revit</h4>
+                    <p class="certification-issuer">EDRAAK</p>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4 class="certification-name">Specialized Module on Cities &amp; Climate Change</h4>
+                    <p class="certification-issuer">UN Learning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-info-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <p>H.Abdullahmoh@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Phone</h4>
+                        <p>+966 53 673 2911</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Location</h4>
+                        <p>Riyadh, Saudi Arabia</p>
+                    </div>
+                </div>
+
+                <div class="contact-item contact-item-linkedin">
+                    <a href="https://www.linkedin.com/in/a-huwayshil?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="linkedin-link">
+                        <div class="contact-icon contact-icon-linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>LinkedIn</h4>
+                            <p>Connect with me</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#home" class="btn btn-secondary">Back to Top</a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Abdullah Alhuwayshil - All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
